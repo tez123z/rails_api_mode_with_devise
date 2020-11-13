@@ -30,6 +30,11 @@ RSpec.describe 'POST /login', type: :request do
         decoded_token = JWT.decode(token_from_request, ENV["DEVISE_JWT_SECRET_KEY"], true)
         expect(decoded_token.first['sub']).to be_present
       end
+
+      it 'matches user json schema' do
+        expect(response).to match_response_schema("user")
+      end
+      
     end
   
     context 'when login params are incorrect' do

@@ -94,4 +94,8 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  #Add all custom matchers
+  Dir.glob("#{Dir.pwd}/spec/matchers/*.rb"){|file| require file }
+
 end
